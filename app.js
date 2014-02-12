@@ -10,6 +10,7 @@ var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
 var project = require('./routes/project');
+var palette = require('./routes/palette');
 // Example route
 // var user = require('./routes/user');
 
@@ -39,6 +40,9 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/project/:id', project.projectInfo);
 // Example route
+
+app.get('/palette', palette.randomPalette);
+
 // app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
