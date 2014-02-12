@@ -27,7 +27,27 @@ function addProjectDetails(e) {
 	var idNumber = projectID.substr('project'.length);
 
 	console.log("User clicked on project " + idNumber);
+
+	$.get("/project/" + idNumber, addDetails);
 }
+
+function addDetails(result){
+	console.log(result);
+	var projectHTML = '<p>' +
+    '<img src="' + result['image'] + '" class="detailsImage">' +
+    '<b>' + result['date'] + '</b>' +
+    '<div>' + result['summary'] +
+    '</div></p>'; 
+
+	//title date summary
+
+	$("#project"+ result['id'] + " .details").html(projectHTML);
+	
+
+	//photo, title , descript
+
+}
+
 
 /*
  * Make an AJAX call to retrieve a color palette for the site
